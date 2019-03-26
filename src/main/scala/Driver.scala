@@ -21,7 +21,8 @@ object Driver {
       import scala.reflect.runtime.universe._
 
       // This is a complete solution as it understands the difference between List[Any] and List[String]
-      // and as a result, does not type check fo each item in the list
+      // and as a result, does not type check each item in the list if generic type of the List equals
+      // to TMatch
       def extractUsingTypeTag[TNode : TypeTag : ClassTag, TMatch : TypeTag : ClassTag](list: List[TNode]) = list match {
         case _ if typeOf[TNode] =:= typeOf[TMatch] => list.asInstanceOf[List[TMatch]]
         case _ => extractUsingClassTag[TNode, TMatch](list)
