@@ -32,11 +32,11 @@ object Driver {
     val heterogeneous: List[Any] = List("Hello", "World!", 123, false)
 
     println("extractFail")
-    println(Extractor.extractFail[Any, String](homogeneous))
+    println(Extractor.extractFail[String, String](homogeneous))
     println(Extractor.extractFail[Any, String](heterogeneous) + "\n")
 
     println("extractUsingClassTag")
-    println(Extractor.extractUsingClassTag[Any, String](homogeneous))
+    println(Extractor.extractUsingClassTag[String, String](homogeneous))
     println(Extractor.extractUsingClassTag[Any, String](heterogeneous) + "\n")
 
     println("extractUsingTypeTag")
