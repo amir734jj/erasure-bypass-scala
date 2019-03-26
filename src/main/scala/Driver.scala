@@ -9,14 +9,14 @@ object Driver {
       def extractFail[TNode, TMatch](list: List[TNode]) = list.filter {
         case _: TMatch => true
         case _ => false
-      }.map(x => x.asInstanceOf[TMatch])
+      } map (x => x.asInstanceOf[TMatch])
 
       // This will work because we passed type of TNode and TMatch implicitly using ClassTag
       // but fails to differentiate between List[Any] and List[String]
       def extractUsingClassTag[TNode : ClassTag, TMatch : ClassTag](list: List[TNode]) = list.filter {
         case _: TMatch => true
         case _ => false
-      }.map(x => x.asInstanceOf[TMatch])
+      } map (x => x.asInstanceOf[TMatch])
 
       import scala.reflect.runtime.universe._
 
